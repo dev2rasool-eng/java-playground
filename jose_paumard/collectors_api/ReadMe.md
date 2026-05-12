@@ -35,6 +35,8 @@ Download: http://introcs.cs.princeton.edu/java/data/papers.lst
             3 -> one, two, six  .stream().collect(downstream)  
             4 -> four, five, nine  .stream().collect(downstream)
          3. Example: groupingBy(String::length, Collectors.counting())
+      3. groupingBy(identity, downstream)
+         1. If the element in the source stream is considered as a key in the result map, then we can use 'identity()' to represent it
             
         
 
@@ -51,5 +53,9 @@ Download: http://introcs.cs.princeton.edu/java/data/papers.lst
   
 2. Devoxx2017B class
    1. Number of articles per Year
-   2. Max number of Articles published Year 
+   2. Year with Max number of Articles published 
    3. All Years with max number of Articles published
+
+3. Devoxx2017C class
+   1. Number of Articles per Author
+   2. Maximum Articles published by an Author
