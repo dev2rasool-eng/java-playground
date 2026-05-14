@@ -1,6 +1,7 @@
 package main.java.dev.rasool.part1;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -27,5 +28,43 @@ public class TestMain {
         Map<Integer, Long> integerLongMap = Arrays.stream(strings)
                 .collect(Collectors.groupingBy(String::length, Collectors.counting()));
         System.out.println("Map of strings based on length and their count: " + integerLongMap);
+
+        //
+        String string = Arrays.stream(strings)
+//                .parallel()
+                .filter(str -> str.length() == 3)
+                .collect(StringBuilder::new,
+                        StringBuilder::append,
+                        StringBuilder::append)
+                .toString();
+        System.out.println("Response: "+ string);
+
+        // Example of collectingAndThen
+        List<String> stringList1 = Arrays.stream(strings)
+                .collect(
+                        Collectors.collectingAndThen(
+                                Collectors.toList(),
+                                Collections::unmodifiableList
+                        )
+                );
+        System.out.println("Collecting And Then:" + stringList1);
+
+        // missing least positive number
+        int[] numbers = {-3, -5, 0, 3, 2};
+
+        // find the max number from array
+        int maxInt = Arrays.stream(numbers)
+                .max()
+                .getAsInt();
+        System.out.println("max: "+maxInt);
+
+        // find least positive number
+        for (int i = 0; i <= maxInt; i++) {
+            if (!Arrays.stream(numbers).boxed().toList().contains(i)) {
+                System.out.println("Least positive number: "+ i);
+                break;
+            }
+
+        }
     }
 }

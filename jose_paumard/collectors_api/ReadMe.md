@@ -36,7 +36,16 @@ Download: http://introcs.cs.princeton.edu/java/data/papers.lst
             4 -> four, five, nine  .stream().collect(downstream)
          3. Example: groupingBy(String::length, Collectors.counting())
       3. groupingBy(identity, downstream)
-         1. If the element in the source stream is considered as a key in the result map, then we can use 'identity()' to represent it
+         1. If the element in the source stream is considered as a key in the result map, then we can use 'identity()' to represent it as key
+3. collect
+   1. Syntax
+      1. collect(supplier, accumulator, combiner)
+         1. Performs a 'mutable' reduction operation on the elements of this stream
+         2. this doesn't work with 'String' type as it is immutable
+         3. combiner is useful only in parallel streams, not in synchronous streams
+4. Collectors.collectingAndThen
+   1. Syntax
+      1. collectingAndThen(downstream, finisher)
             
         
 
