@@ -20,7 +20,8 @@ Download: http://introcs.cs.princeton.edu/java/data/papers.lst
    2. Terminal Operations - Only a terminal operation triggers the consuming of the data from the source
       1. Consume all data from source - forEach, count, max, min, reduce, toArray
       2. Do not consume all data / Short-circuit operations - allMatch, anyMatch, noneMatch, findFirst, findAny
-      3. Returns Optional - max, min, reduce
+      3. Returns Optional - max, min, reduce   
+  
 
 2. groupingBy
    1. Returns a Map
@@ -37,16 +38,32 @@ Download: http://introcs.cs.princeton.edu/java/data/papers.lst
          3. Example: groupingBy(String::length, Collectors.counting())
       3. groupingBy(identity, downstream)
          1. If the element in the source stream is considered as a key in the result map, then we can use 'identity()' to represent it as key
+  
+
 3. collect
    1. Syntax
       1. collect(supplier, accumulator, combiner)
          1. Performs a 'mutable' reduction operation on the elements of this stream
          2. this doesn't work with 'String' type as it is immutable
          3. combiner is useful only in parallel streams, not in synchronous streams
+  
+
 4. Collectors.collectingAndThen
    1. Syntax
       1. collectingAndThen(downstream, finisher)
-            
+  
+
+5. Collectors.mapping
+   1. This is used to convert one data type to another. Just like map()
+   2. Syntax
+      1. Collectors.mapping(mapper, downstream)  
+      2. Ex: Collectors.mapping(getKey(), toList())
+  
+
+6. Collectors.toMap
+   1. Convert the stream to map / Convert existing map to another map
+   2. Syntax
+      1. Collectors.toMap(keyMapper, valueMapper) 
         
 
 
@@ -68,3 +85,11 @@ Download: http://introcs.cs.princeton.edu/java/data/papers.lst
 3. Devoxx2017C class
    1. Number of Articles per Author
    2. Maximum Articles published by an Author
+
+4. Devoxx2017D class
+   1. find the highest articles published in a year (with readable code) 
+
+5. Devoxx2017E class
+   1. All Years with max number of Articles published. Display only max article count with list of years.  
+        Map<Article_Count, List<Year>>
+        
