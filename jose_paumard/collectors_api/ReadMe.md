@@ -61,9 +61,12 @@ Download: http://introcs.cs.princeton.edu/java/data/papers.lst
   
 
 6. Collectors.toMap
-   1. Convert the stream to map / Convert existing map to another map
+   1. Convert the stream to map / Convert existing map to another map i.e., remap
    2. Syntax
       1. Collectors.toMap(keyMapper, valueMapper) 
+   3. Difference between groupingBy() vs toMap()
+      1. toMap() doesn't create duplicate keys
+      2. groupingBy() can create duplicate keys to group them later 
         
 
 

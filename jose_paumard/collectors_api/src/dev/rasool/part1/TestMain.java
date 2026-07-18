@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class TestMain {
@@ -64,7 +65,26 @@ public class TestMain {
                 System.out.println("Least positive number: "+ i);
                 break;
             }
-
         }
+
+        // Duplicate Numbers
+        int[] dumbers = {1, 2, 3, 4, 4, 3, 2, 5, 2, 3};
+        Map<Integer, Long> integerLongMap1 = Arrays.stream(dumbers)
+                .boxed()
+                .collect(
+                        Collectors.groupingBy(
+                                Function.identity(),
+                                Collectors.counting()
+                        ));
+
+        // Duplicate Numbers
+        List<Integer> list1 = integerLongMap1
+                .entrySet()
+                .stream()
+                .filter(e -> e.getValue() == 1)
+                .map(Map.Entry::getKey)
+                .toList();
+
+        System.out.println(list1);
     }
 }
